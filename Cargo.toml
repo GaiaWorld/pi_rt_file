@@ -2,7 +2,7 @@
 authors = ["vmos <vmos@fairblock.io>"]
 edition = "2018"
 name = "pi_rt_file"
-version = "0.1.0"
+version = "0.1.1"
 description = "async file 的封装，添加了多线程竞争排序。"
 repository = "https://github.com/GaiaWorld/pi_rt_file.git"
 license = "MIT OR Apache-2.0"
