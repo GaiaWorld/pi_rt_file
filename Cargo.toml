@@ -2,7 +2,7 @@
 authors = ["vmos <vmos@fairblock.io>"]
 edition = "2018"
 name = "pi_rt_file"
-version = "0.2.0"
+version = "0.2.1"
 description = "async file 的封装，添加了多线程竞争排序。"
 repository = "https://github.com/GaiaWorld/pi_rt_file.git"
 license = "MIT OR Apache-2.0"
@@ -12,6 +12,6 @@ keywords = ["pi", "rt_file"]
 fnv = "1.0"
 lazy_static = "1.4"
 num_cpus = "1.13"
-pi_async = "0.2"
-pi_async_file = "0.1.5"
+pi_async = "0.5"
+pi_async_file = "0.4"
 pi_hash = {version = "0.1.1", features = ["xxhash"]}
