@@ -5,8 +5,9 @@ extern crate pi_hash;
 #[macro_use]
 extern crate lazy_static;
 
-use pi_async::lock::{mutex_lock::Mutex, rw_lock::RwLock, spin_lock::SpinLock};
-use pi_async::rt::multi_thread::{MultiTaskRuntime, MultiTaskRuntimeBuilder, StealableTaskPool};
+use async_lock::{Mutex, RwLock};
+use pi_async_rt::lock::spin_lock::SpinLock;
+use pi_async_rt::rt::multi_thread::{MultiTaskRuntime, MultiTaskRuntimeBuilder, StealableTaskPool};
 use pi_async_file::file::{AsyncFile, AsyncFileOptions, WriteOptions};
 use pi_hash::XHashMap;
 use std::collections::hash_map::Entry;
@@ -28,7 +29,7 @@ lazy_static! {
             Ok(r) => usize::from_str_radix(r.as_str(), 10).unwrap(),
             _ => num_cpus::get()
         };
-        let pool = StealableTaskPool::with(count, count);
+        let pool = StealableTaskPool::with(count, 100000, [1,1], 3000);
         // 线程池：每个线程1M的栈空间，10ms 休眠，10毫秒的定时器间隔
         let builder = MultiTaskRuntimeBuilder::new(pool)
         .thread_prefix("File-Runtime")
